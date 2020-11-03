@@ -16,14 +16,17 @@ public class Panel extends JPanel implements Observado {
 	private Observador observador;
 	
 	public Panel(String name1, String name2, String name3) {
+		//Creamos nuevos botones
 		this.btn1 = new JButton(name1);
 		this.btn2 = new JButton(name2);
 		this.btn3 = new JButton(name3);	
 		
+		//Agregamos una accion al presionar los botones
 		btn1.addActionListener(new CambioColor());
 		btn2.addActionListener(new CambioColor());
 		btn3.addActionListener(new CambioColor());
 		
+		//Agregamos los botones al panel
 		this.add(btn1);
 		this.add(btn2);
 		this.add(btn3);
@@ -33,7 +36,8 @@ public class Panel extends JPanel implements Observado {
 	public void notificar() {
 		// TODO Auto-generated method stub
 		Principal obs = (Principal) this.observador;
-		obs.actualizar(this.getBackground());
+		obs.actualizar(this.getBackground());//Actualizamos la informacion del color 
+		obs.growCont();
 	}
 	
 	@Override
@@ -41,15 +45,24 @@ public class Panel extends JPanel implements Observado {
 		this.observador = obs;		
 	}
 	
-	
+	/**
+	 * Esta clase servira para indicar que hara cada boton al presioanrlo en 
+	 * este caso cambiar de color a la ventana
+	 * @author Sebastian
+	 *
+	 */
 	private final class CambioColor implements ActionListener{
 		
+		/**
+		 * Realiza la accion de cambiar de color al fondo del panel
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub			
-			JButton boton = (JButton) e.getSource();
-			Panel pan = (Panel) boton.getParent();
-			String name = boton.getText();
+			JButton boton = (JButton) e.getSource();//Recuperamos el boton
+			Panel pan = (Panel) boton.getParent();//Recuperamos el contenedor
+			String name = boton.getText();//Recuperamos el texto del boton
 			
+			//Realizamos la respectiva verificacion
 			if(name.equals("Azul")) {
 				pan.setBackground(Color.BLUE);
 				
@@ -62,6 +75,8 @@ public class Panel extends JPanel implements Observado {
 				pan.setBackground(Color.YELLOW);
 				
 			}
+			
+			//Notificamos al observador de los cambios
 			pan.notificar();
 		}		
 	}

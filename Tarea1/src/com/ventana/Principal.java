@@ -1,6 +1,8 @@
 package com.ventana;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
@@ -11,19 +13,38 @@ public class Principal extends JFrame implements Observador{
 	
 	private static final long serialVersionUID = 1L;
 	private Color color;
+	private int contador;
 	
 	public Principal() {
 		this.color = this.getBackground();
 		this.setSize(300, 200);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-		
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+            public void windowClosing(WindowEvent e)
+            {               
+               cerrar();
+            }
+		});
+	}	
+
 	public Color getColor() {
 		return color;
 	}
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+	
+	public int getContador() {
+		return this.contador;
+	}
+	
+	public void growCont() {
+		this.contador++;
+	}
+	
+	public void cerrar() {
+		this.dispose();
 	}
 	
 	@Override
