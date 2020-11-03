@@ -1,5 +1,5 @@
 package com.ventana;
 
-public class Cambios {
+public aspect Cambios {
 
 }
