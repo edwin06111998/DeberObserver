@@ -37,7 +37,6 @@ public class Panel extends JPanel implements Observado {
 		// TODO Auto-generated method stub
 		Principal obs = (Principal) this.observador;
 		obs.actualizar(this.getBackground());//Actualizamos la informacion del color 
-		obs.growCont();
 	}
 	
 	@Override
@@ -46,7 +45,7 @@ public class Panel extends JPanel implements Observado {
 	}
 	
 	/**
-	 * Esta clase servira para indicar que hara cada boton al presioanrlo en 
+	 * Esta clase servira para indicar que hara cada boton al presionarlo en 
 	 * este caso cambiar de color a la ventana
 	 * @author Sebastian
 	 *
@@ -60,18 +59,18 @@ public class Panel extends JPanel implements Observado {
 			// TODO Auto-generated method stub			
 			JButton boton = (JButton) e.getSource();//Recuperamos el boton
 			Panel pan = (Panel) boton.getParent();//Recuperamos el contenedor
-			String name = boton.getText();//Recuperamos el texto del boton
+			String nombre = boton.getText();//Recuperamos el texto del boton
 			
 			//Realizamos la respectiva verificacion
-			if(name.equals("Azul")) {
+			if(nombre.equals("Azul")) {
 				pan.setBackground(Color.BLUE);
 				
 			}
-			if(name.equals("Rojo")) {
+			if(nombre.equals("Rojo")) {
 				pan.setBackground(Color.RED);
 				
 			}
-			if(name.equals("Amarillo")) {
+			if(nombre.equals("Amarillo")) {
 				pan.setBackground(Color.YELLOW);
 				
 			}

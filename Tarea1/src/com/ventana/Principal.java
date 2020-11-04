@@ -20,10 +20,7 @@ public class Principal extends JFrame implements Observador{
 		this.setSize(300, 200);
 		this.addWindowListener(new WindowAdapter() {
 			@Override
-            public void windowClosing(WindowEvent e)
-            {               
-               cerrar();
-            }
+            public void windowClosing(WindowEvent e){cerrar();}
 		});
 	}	
 
@@ -39,18 +36,17 @@ public class Principal extends JFrame implements Observador{
 		return this.contador;
 	}
 	
-	public void growCont() {
-		this.contador++;
-	}
-	
-	public void cerrar() {
+	private void cerrar() {
 		this.dispose();
 	}
 	
 	@Override
 	public void actualizar(Object objeto) {
 		// TODO Auto-generated method stub
-		this.setColor((Color) objeto);
+		if(!this.color.equals((Color) objeto)){
+			this.setColor((Color) objeto);
+			this.contador++;
+		}
 	}
 	
 
