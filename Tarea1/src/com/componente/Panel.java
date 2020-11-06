@@ -46,8 +46,7 @@ public class Panel extends JPanel implements Observado {
 	
 	/**
 	 * Esta clase servira para indicar que hara cada boton al presionarlo en 
-	 * este caso cambiar de color a la ventana
-	 * @author Sebastian
+	 * este caso cambiar de color a la ventana	  
 	 *
 	 */
 	private final class CambioColor implements ActionListener{
@@ -61,7 +60,7 @@ public class Panel extends JPanel implements Observado {
 			Panel pan = (Panel) boton.getParent();//Recuperamos el contenedor
 			String nombre = boton.getText();//Recuperamos el texto del boton
 			
-			//Realizamos la respectiva verificacion
+			//Realizamos la respectiva verificacion y cambiamos el color
 			if(nombre.equals("Azul")) {
 				pan.setBackground(Color.BLUE);
 				

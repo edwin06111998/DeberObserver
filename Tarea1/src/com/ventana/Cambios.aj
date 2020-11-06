@@ -24,12 +24,10 @@ public aspect Cambios {
 		Color actualColor = princ.getColor();//Recuperamos el color actual
 		
 		//Se verifica si enrealidad se ha cambiado de color
-		if(!antColor.equals(darColor(actualColor))) {
-			
+		if(!antColor.equals(darColor(actualColor))) {			
 			//si el panel cambio de color imprimimos el cambio
 			System.out.println("Cambio de Color: de " + antColor + " a " + darColor(actualColor));
-		}else {
-			
+		}else {			
 			//si el panel no cambio de color imprimmos el siguiente mensaje
 			System.out.println("*** No se ha realizado un cambio de color");
 		}		

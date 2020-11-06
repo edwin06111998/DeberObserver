@@ -12,11 +12,11 @@ import com.componente.Panel;
 public class Principal extends JFrame implements Observador{
 	
 	private static final long serialVersionUID = 1L;
-	private Color color;
-	private int contador;
+	private Color colorPanel;//se guarda el color actual de la ventana
+	private int contadorCambios;// servira para contar cuantos cambios se han realizado
 	
 	public Principal() {
-		this.color = this.getBackground();
+		this.colorPanel = this.getBackground();
 		this.setSize(300, 200);
 		this.addWindowListener(new WindowAdapter() {
 			@Override
@@ -25,28 +25,39 @@ public class Principal extends JFrame implements Observador{
 	}	
 
 	public Color getColor() {
-		return color;
+		return colorPanel;
 	}
 
 	public void setColor(Color color) {
-		this.color = color;
+		this.colorPanel = color;
 	}
 	
 	public int getContador() {
-		return this.contador;
+		return this.contadorCambios;
 	}
 	
+	/**
+	 * Ayudara a cerrar la ventana activa
+	 */
 	private void cerrar() {
 		this.dispose();
 	}
 	
+	/**
+	 * Ayudara a actualizar la informacion tanto del color de la ventana
+	 * como aumentar el contador
+	 */
 	@Override
 	public void actualizar(Object objeto) {
 		// TODO Auto-generated method stub
-		if(!this.color.equals((Color) objeto)){
-			this.setColor((Color) objeto);
-			this.contador++;
-		}
+		if(objeto instanceof Color) {
+			//verificamos si el color no es igual al anterior
+			if(!this.colorPanel.equals((Color) objeto)){
+				//si es asi actualizamos el color y aumentamos el contador
+				this.setColor((Color) objeto);
+				this.contadorCambios++;
+			}			
+		}				
 	}
 	
 
